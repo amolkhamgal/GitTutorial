@@ -1,0 +1,83 @@
+{% extends 'base.html' %} {% block body %}
+<div class="container mt-4">
+  <div class="col-lg-5 mx-auto">
+    <div class="border rounded p-4 m-4">
+      <h2 class="mx-auto border rounded p-2 m-2 bg-primary text-white">
+        Add Your Account
+      </h2>
+
+      <form action="/signup/"  method="POST">
+          {% csrf_token %}
+
+          {% if error %}
+          <div class="alert alert-danger" role="alert">
+            {{error}}
+          </div>
+          {% endif %}
+        <div class="form-group">
+          <label for="firstname">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="first_name"
+            value="{{values.first_name}}"
+            id="firstname"
+            placeholder="Enter First Name"
+          />
+        </div>
+        <div>
+          <label for="lastname">Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="last_name"
+            value="{{values.last_name}}"
+
+            id="lastname"
+            placeholder="Enter Last Name"
+          />
+        </div>
+        <div>
+          <label for="phone_no">Phone</label>
+          <input
+            type="text"
+            class="form-control"
+            name="phone"
+            value="{{values.phone}}"
+
+            id="phone_no"
+            placeholder="Enter Phone Number  "
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            value="{{values.email}}"
+
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+
+            id="exampleInputPassword1"
+            placeholder="***********"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-sm btn-primary">SignUp</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
